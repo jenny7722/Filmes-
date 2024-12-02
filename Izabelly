@@ -1,0 +1,81 @@
+html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Catálogo de Vídeos</title>
+</head>
+<body>
+    <header>
+        <h1>Catálogo de Vídeos</h1>
+    </header>
+    <main>
+        <section class="video-catalog">
+            <article class="video-item">
+                <h2>Título do Vídeo 1</h2>
+                <video controls>
+                    <source src="video1.mp4" type="video/mp4">
+                    Seu navegador não suporta HTML5.
+                </video>
+            </article>
+            <article class="video-item">
+                <h2>Título do Vídeo 2</h2>
+                <video controls>
+                    <source src="video2.mp4" type="video/mp4">
+                    Seu navegador não suporta HTML5.
+                </video>
+            </article>
+            <!-- Adicione mais vídeos conforme necessário -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Meu Catálogo de Vídeos</p>
+    </footer>
+</body>
+</html>
+```
+
+``css
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.video-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.video-item {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+```
