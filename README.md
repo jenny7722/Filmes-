@@ -1,53 +1,35 @@
-html
-     <div class="container">
-         <h1>Recomendador de Filmes</h1>
-         <button id="recommend-btn">Recomendar um Filme</button>
-         <p id="recommendation"></p>
-     </div>     body {
-         font-family: Arial, sans-serif;
-         background-color: #f4f4f4;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         height: 100vh;
-         margin: 0;  body {
-         font-family: Arial, sans-serif;
-         background-color: #f4f4f4;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         height: 100vh;
-         margin: 0;
-     }
 
-     .container {
-         text-align: center;
-         background: white;
-         padding: 2em;
-         border-radius: 8px;
-         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-     }
+```html
+   <!DOCTYPE html>
+   <html lang="pt-BR">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="style.css">
+       <title>Recomendador de Filmes</title>
+   </head>
+   <body>
+       <h1>Recomendador de Filmes</h1>
+       <input type="text" id="genre" placeholder="Digite um gênero">
+       <button id="recommend">Recomendar Filme</button>
+       <div id="result"></div>
+       <script src="script.js"></script>
+   </body>
+   </html>
 
-     button {
-         padding: 10px 20px;
-         font-size: 16px;
-         cursor: pointer; ```javascript
-     const filmes = [
-         "A Origem (Inception)",
-         "O Senhor dos Anéis: A Sociedade do Anel (The Lord of the Rings: The Fellowship of the Ring)",
-         "O Poderoso Chefão (The Godfather)",
-         "Pulp Fiction",
-         "Forrest Gump",
-         "A Rede Social (The Social Network)",
-         "Interstellar",
-         "O Silêncio dos Inocentes (The Silence of the Lambs)",
-         "A Vida é Bela (Life is Beautiful)",
-         "O Exterminador do Futuro (The Terminator)"
-     ];
+```javascript
+   const apiKey = 'SUA_CHAVE_API_AQUI'; // Use uma chave válida da API
+   const apiUrl = 'https://api.themoviedb.org/3/discover/movie';
 
-     document.getElementById('recommend-btn').addEventListener('click', function() {
-         const randomIndex = Math.floor(Math.random() * filmes.length);
-         const filmeRecomendado = filmes[randomIndex];
-         document.getElementById('recommendation').innerText = filmeRecomendado;
-     });
-     ```
+   document.getElementById('recommend').addEventListener('click', () => {
+       const genre = document.getElementById('genre').value;
+       fetch(`${apiUrl}?api_key=${apiKey}&with_genres=${genre}`)
+           .then(response => response.json())
+           .then(data => {
+               const movies = data.results;
+               const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+               document.getElementById('result').innerText = randomMovie.title;
+           })
+           .catch(error => console.error('Erro:', error));
+   });
+   ```
